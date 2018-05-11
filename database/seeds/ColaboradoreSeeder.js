@@ -12,6 +12,7 @@
 
 const Factory = use('Factory')
 
+/*
 class ColaboradoreSeeder {
   async run () {
     const colaboradores = await Factory
@@ -20,5 +21,5 @@ class ColaboradoreSeeder {
 
   }
 }
-
+*/
 module.exports = ColaboradoreSeeder

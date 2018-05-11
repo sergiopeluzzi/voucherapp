@@ -21,14 +21,10 @@ class ExceptionHandler extends BaseExceptionHandler {
    * @return {void}
    */
   async handle (error, { request, response }) {
-    if (error.name == 'InvalidSessionException') {
+    if (error.name == 'InvalidSessionException' || error.name == 'PasswordMisMatchException' || error.name == 'UserNotFoundException') {
       return response.redirect('/api/v1')
     }
 
-    if (error.name == 'UserNotFoundException') {
-      return response.redirect('/api/v1')
-    }
-    
     response.status(error.status).send(error.name)
   }
 

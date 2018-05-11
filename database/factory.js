@@ -13,7 +13,7 @@
 
 const Factory = use('Factory')
 
-
+/*
 Factory.blueprint('App/Models/Colaborador', (faker) => {
   return {
     nome: faker.name(),
@@ -21,11 +21,12 @@ Factory.blueprint('App/Models/Colaborador', (faker) => {
     dtnascimento: faker.birthday({string: true, american: false})
   }
 })
+*/
 
 Factory.blueprint('App/Models/User', (faker) => {
   return {
     username: 'admin',
     email: 'admin@facimed.edu.br',
-    password: '123456'
+    password: 'facvou123@'
   }
 })

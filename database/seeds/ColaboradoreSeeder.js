@@ -12,14 +12,14 @@
 
 const Factory = use('Factory')
 
-/*
+
 class ColaboradoreSeeder {
-  async run () {
+/*  async run () {
     const colaboradores = await Factory
       .model('App/Models/Colaborador')
       .createMany(10)
 
-  }
+  }*/
 }
-*/
+
 module.exports = ColaboradoreSeeder

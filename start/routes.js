@@ -15,7 +15,7 @@
 
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+//Route.on('/').render('welcome')
 
 Route.group(() => {
 
@@ -27,7 +27,7 @@ Route.group(() => {
     Route.post('vouchers', 'VoucherController.apply').as('apply')
     Route.post('usuarios', 'UserController.login').as('login')
     
-}).prefix('api/v1')
+})
 
 Route.group(() => {
     Route.get('usuarios', 'UserController.index').as('usuarios.index')
@@ -47,5 +47,5 @@ Route.group(() => {
     Route.put('voucher/:id', 'VoucherController.update')
     Route.post('voucher', 'VoucherController.store').as('voucher.store')
     Route.get('voucher-delete/:id', 'VoucherController.delete').as('voucher.delete')
-}).prefix('api/v1').middleware(['auth'])
+}).middleware(['auth'])
 

@@ -14,7 +14,7 @@ class UserController {
   async logout({response, auth, view}) {
     await auth.logout()
 
-    return response.redirect('/api/v1')
+    return response.redirect('/')
   }
 
   async index({ view }) {

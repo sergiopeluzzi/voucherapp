@@ -1,0 +1,30 @@
+@layout('main')
+
+@section('content')
+    <h1> {{ title }} </h1>
+    <table class="table table-hover table-datatable display">
+        <thead>
+            <tr align="center">
+                <th>#</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Dt Nascimento</th>
+                <th>Vouchers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(col in colaboradores)
+            <tr>
+                <td align="center">{{ col.id }}</td>
+                <td>{{ col.nome }}</td>
+                <td align="center">{{ col.cpf }}</td>
+                <td align="center">{{ col.dtnascimento }}</td>
+                <td align="right">
+                   
+                    <a href="{{ route('colaboradores.show', {id: col.id}) }}" class="pull-right"  style="font-size: 1.5em;">{{ col.__meta__.vouchers_count }} <i class="fa fa-eye"></i></a>    
+                </td>
+            </tr>
+            @endeach
+        </tbody>
+    </table>
+@endsection

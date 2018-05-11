@@ -1,0 +1,41 @@
+@layout('main')
+
+@section('content')
+    @each(col in colaborador)        
+        <div class="col-sm-12" align="center">
+        <a href="{{ route('colaboradores.index') }}" class="btn btn-lg btn-primary pull-right"><i class="fa fa-arrow-circle-left"></i> Voltar</a>
+            <div class="col-sm-4">Colaborador/Aluno <h1> {{ col.nome }} </h1></div>
+            <div>CPF <h4>  {{ col.cpf }} </h4></div>
+            <div>Dt. Nascimento <h4 class="m5">  {{ col.dtnascimento }} </h4></div>            
+        </div>
+        <div class="col-sm-12"  align="center">
+        @if(col.__meta__.vouchers_count > 0)
+            @each(vou in col.vouchers)
+            <div class="col-sm-6 mb-5" align="left">                
+                <ul class="list-group" >
+                    @if(vou.validado == 1)
+                        @if(vou. matriculado == 1)
+                            <li class="list-group-item bg-success">Id: <span class="pull-right">{{ vou.id }}</span></li>
+                        @else
+                            <li class="list-group-item bg-info">Id: <span class="pull-right">{{ vou.id }}</span></li>
+                        @endif
+                    @else
+                        <li class="list-group-item bg-danger">Id: <span class="pull-right">{{ vou.id }}</span></li>
+                    @endif
+                    <li class="list-group-item">Código:  <span class="pull-right">{{ vou.codigo }}</span></li>
+                    <li class="list-group-item">Calouro Nome:  <span class="pull-right">{{ vou.ingressante_nome || '' }}</span></li>
+                    <li class="list-group-item">Calouro CPF:  <span class="pull-right">{{ vou.ingressante_cpf || '' }}</span></li>
+                    <li class="list-group-item">Calouro Dt. Nascimento:  <span class="pull-right">{{ vou.ingressante_dtnascimento || '' }}</span></li>
+                    <li class="list-group-item">Validado:  <span class="pull-right">{{ vou.validado ? 'Sim' : 'Não'}}</span></li>
+                    <li class="list-group-item">Matriculado:  <span class="pull-right">{{ vou.matriculado ? 'Sim' : 'Não'}}</span></li>
+                </ul>       
+            </div>
+            @endeach
+        @else
+            <ul class="list-group">
+                <li class="list-group-item active">Colaborador sem vouchers!!</span></li>
+            </ul>
+        @endif
+        </div>
+    @endeach
+@endsection

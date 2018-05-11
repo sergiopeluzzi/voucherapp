@@ -1,0 +1,36 @@
+@layout('main')
+
+@section('content')
+    
+    <h1>{{ title }}</h1>
+    <form action="{{ route('apply') }}" method="POST">
+        <div class="form-group">
+            <input class="form-control form-control-lg" type="text" placeholder="Insira seu nome" name="ingressante_nome" required  >
+        </div>
+        <div class="form-group">
+            <input class="form-control form-control-lg" type="text" placeholder="Insira seu CPF" name="ingressante_cpf" id="ingressante_cpf" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control form-control-lg" type="text" placeholder="Insira sua data de nascimento" name="ingressante_dtnascimento" id="ingressante_dtnascimento" required>
+        </div>
+        <div class="form-group">
+             <select class="select-create custom-select custom-select-lg" name="curso" id="curso" required>
+                <option selected>Selecione o curso</option>
+                <option value="Arquitetura">Arquitetura</option>
+                <option value="Educação Física">Educação Física</option>
+                <option value="Enfermagem">Enfermagem</option>
+                <option value="Engenharia Civil">Engenharia Civil</option>
+                <option value="Engenharia Elétrica">Engenharia Elétrica</option>
+                <option value="Farmácia">Farmácia</option>
+                <option value="Fisioterapia">Fisioterapia</option>
+                <option value="Medicina Veterinária">Medicina Veterinária</option>
+                <option value="Odontologia">Odontologia</option>
+                <option value="Psicologia">Psicologia</option>
+            </select>
+        </div>        
+        <div class="form-group">
+            <input class="form-control form-control-lg" type="text" placeholder="Insira o código do voucher" name="codigo" required>
+        </div>
+        <button type="submit" class="btn btn-lg btn-success"><i class="fa fa-check-circle"></i> Validar Voucher</button>
+    </form>
+@endsection

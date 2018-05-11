@@ -1,0 +1,31 @@
+@layout('main')
+
+@section('content')
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>Sucesso!</h1>
+                <h2>Voucher validado</h2>
+                <div class="error-details" align="center">
+                    <h4>Confira os dados abaixo:</h4>
+                    <ul class="list-group col-sm-6">
+                        <li class="list-group-item">Voucher: <span>{{ voucher.codigo }}</span></li>
+                        <li class="list-group-item">Beneficiado: <span></span>{{ voucher.ingressante_nome }}</li>
+                        <li class="list-group-item">CPF: <span></span>{{ voucher.ingressante_cpf }}</li>
+                        <li class="list-group-item">Data de Nascimento: <span></span>{{ voucher.ingressante_dtnascimento }}</li>
+                        <li class="list-group-item">Situação: <span>{{ voucher.validado ? 'Validado' : 'Pendente'}}</span></li>
+                    </ul>
+                </div>
+                <div class="error-actions">
+                    <a href="{{ route('validate') }}" class="btn btn-primary btn-lg">
+                        <span class="fa fa-refresh"></span> Validar outro Voucher 
+                    </a>
+                    <a href="http://www.facimed.edu.br" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-envelope"></span> Site FACIMED
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+@endsection

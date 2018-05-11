@@ -1,0 +1,63 @@
+@layout('main')
+
+@section('content')
+    <div class="pull-right">
+        <a href="{{ route('voucher.create') }}" class="btn btn-lg btn-primary">Cadastrar</a>
+        <a href="{{ route('validate') }}" class="btn btn-lg btn-primary">Validar</a>
+    </div>
+    <h1> {{ title }} </h1>
+    <table class="table table-hover table-datatable display" id="tbvoucher" width="100%">
+        <thead>
+            <tr align="center">
+                <th>#</th>
+                <th>Codigo</th>
+                <th>Colaborador</th>
+                <th>Tipo</th>
+                <th>Calouro Nome</th>
+                <th>Calouro CPF</th>
+                <th>Calouro Data Nascimento</th>
+                <th>Curso</th>
+                <th>Validado</th>
+                <th>Matriculado</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(vou in vouchers)
+            <tr>
+                <td align="center">{{ vou.id }}</td>
+                <td align="center">{{ vou.codigo }}</td>
+                <td>{{ vou.colaborador.nome }}</td>
+                <td align="center">{{ vou.tipo }}</td>
+                <td>{{ vou.ingressante_nome || '' }}</td>
+                <td align="center">{{ vou.ingressante_cpf || '' }}</td>
+                <td align="center">{{ vou.ingressante_dtnascimento || '' }}</td>
+                <td align="center">{{ vou.curso || '' }}</td>
+                @if(vou.validado == 1)
+                    <td align="center"><span class="fa fa-check-circle" style="color: green; font-size: 1.8em;"></span></td>
+                @else
+                    <td align="center"><span class="fa fa-times-circle" style="color: red; font-size: 1.8em;"></span></td>
+                @endif
+                @if(vou.validado == 1)
+                    @if(vou.matriculado == 1)
+                        <td align="center">
+                            <a href="{{ route('matricula', {id: vou.id}) }}" class="fa fa-user" style="color: green; font-size: 1.8em;"></a>
+                        </td>
+                    @else
+                        <td align="center">
+                            <a href="{{ route('matricula', {id: vou.id}) }}" class="fa fa-user-times" style="color: red; font-size: 1.8em;"></a>
+                        </td>
+                    @endif
+                @else
+                    <td align="center">
+                        <span class="fa fa-user-times" style="color: red; font-size: 1.8em;"></span>
+                    </td>
+                @endif
+                <td align="center">
+                    <a href="{{ route('voucher.delete', { id: vou.id }) }}" onclick="return confirm('Confirma a exclusão do voucher {{ vou.codigo }} ?');" class="fa fa-trash" style="color: red; font-size: 1.8em;"></a>
+                </td>
+            </tr>
+            @endeach
+        </tbody>
+    </table>
+@endsection

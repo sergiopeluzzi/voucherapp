@@ -1,0 +1,28 @@
+@layout('main')
+
+@section('content')
+    <h1> {{ title }} </h1>
+    <table class="table table-hover table-datatable display">
+        <thead>
+            <tr align="center">
+                <th>#</th>
+                <th>Usuário</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(user in users)
+            <tr>
+                <td align="center">{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td align="center">{{ user.email }}</td>
+                <td align="center">
+                    <span onclick="return confirm('Não é possivel excluir o usuário {{ user.username }}');" class="fa fa-trash" style="color: gray; font-size: 1.8em;"></span>
+                </td>
+            </tr>
+            @endeach
+        </tbody>
+    </table>
+
+@endsection

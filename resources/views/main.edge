@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello Adonis</title>
+  {{ css('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css') }}
+  {{ css('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
+  {{ css('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css') }}
+  {{ css('https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css') }}
+  {{ css('main') }}
+</head>
+<body>
+  <div class="se-pre-con"></div>
+  <main class="container">
+    @if(auth.user)
+      <a class="btn btn-default pull-right" href="{{ route('logout') }}">Logout</a>
+      <nav class="nav navbar-light bg-light">
+        <a class="navbar-brand" href="{{ route('home') }}">
+          <img src="{{ assetsUrl('facimed.png') }}" width="150" height="30" class="d-inline-block align-top" alt="" >
+          voucher
+        </a>
+        <a class="nav-link" href="{{route('colaboradores.index')}}">Colaboradores</a>
+        <a class="nav-link" href="{{route('voucher.index')}}">Vouchers</a>
+        <a class="nav-link" href="{{route('usuarios.index')}}">Usuários</a>
+      </nav>
+    @else
+      <nav class="nav navbar-light bg-light">
+        <a class="navbar-brand" href="{{ route('home') }}">
+          <img src="{{ assetsUrl('facimed.png') }}" width="150" height="30" class="d-inline-block align-top" alt="" >
+          voucher
+        </a>
+      </nav>
+    @endif
+    
+    @!section('content')
+  </main>
+  {{ script('https://code.jquery.com/jquery-3.1.1.js') }}
+  {{ script('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }}
+  {{ script('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js') }}
+  {{ script('https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js') }}
+  {{ script('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js') }}
+  {{ script('https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js') }}
+  {{ script('https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js') }}
+  {{ script('http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js') }}
+  {{ script('main') }}
+</body>
+</html>

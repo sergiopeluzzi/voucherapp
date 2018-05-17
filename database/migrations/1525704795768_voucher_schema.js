@@ -15,6 +15,7 @@ class VoucherSchema extends Schema {
       table.string('curso').nullable()
       table.integer('validado').defaultTo(0)
       table.integer('matriculado').defaultTo(0)
+      table.string('curso_mat').nullable()
       table.timestamps()
 
       table.foreign('colaborador_id').references('id').inTable('colaboradores')

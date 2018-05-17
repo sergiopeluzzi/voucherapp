@@ -39,13 +39,14 @@ Route.group(() => {
     Route.get('colaboradores', 'ColaboradoresController.index').as('colaboradores.index')
     Route.get('colaboradores/:id', 'ColaboradoresController.show').as('colaboradores.show')
 
-    Route.get('matricula/:id', 'VoucherController.matricula').as('matricula')
-
     Route.get('voucher', 'VoucherController.index').as('voucher.index')
     Route.get('voucher/:id', 'VoucherController.show')
     Route.get('voucher-create', 'VoucherController.create').as('voucher.create')
     Route.put('voucher/:id', 'VoucherController.update')
     Route.post('voucher', 'VoucherController.store').as('voucher.store')
     Route.get('voucher-delete/:id', 'VoucherController.delete').as('voucher.delete')
+
+    Route.get('matricular/:id', 'VoucherController.enroll').as('voucher.enroll')
+    Route.post('matricular', 'VoucherController.matricula').as('matricula')
 }).middleware(['auth'])
 

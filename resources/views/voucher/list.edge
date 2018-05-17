@@ -13,12 +13,12 @@
                 <th>Codigo</th>
                 <th>Colaborador</th>
                 <th>Tipo</th>
-                <th>Calouro Nome</th>
-                <th>Calouro CPF</th>
-                <th>Calouro Data Nascimento</th>
+                <th>Ingr. Nome</th>
+                <th>Ingr. CPF</th>
+                <th>Ingr. Dt. Nascimento</th>
                 <th>Curso</th>
-                <th>Validado</th>
-                <th>Matriculado</th>
+                <th>Validado Matriculado</th>
+                <th>Curso Matriculado</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -27,37 +27,42 @@
             <tr>
                 <td align="center">{{ vou.id }}</td>
                 <td align="center">{{ vou.codigo }}</td>
-                <td>{{ vou.colaborador.nome }}</td>
+                <td class="text-nowrap">{{ vou.colaborador.nome }}</td>
                 <td align="center">{{ vou.tipo }}</td>
-                <td>{{ vou.ingressante_nome || '' }}</td>
-                <td align="center">{{ vou.ingressante_cpf || '' }}</td>
+                <td class="text-nowrap">{{ vou.ingressante_nome || '' }}</td>
+                <td class="text-nowrap" align="center">{{ vou.ingressante_cpf || '' }}</td>
                 <td align="center">{{ vou.ingressante_dtnascimento || '' }}</td>
                 <td align="center">{{ vou.curso || '' }}</td>
-                @if(vou.validado == 1)
-                    <td align="center"><span class="fa fa-check-circle" style="color: green; font-size: 1.8em;"></span></td>
-                @else
-                    <td align="center"><span class="fa fa-times-circle" style="color: red; font-size: 1.8em;"></span></td>
-                @endif
-                @if(vou.validado == 1)
-                    @if(vou.matriculado == 1)
-                        <td align="center">
-                            <a href="{{ route('matricula', {id: vou.id}) }}" class="fa fa-user" style="color: green; font-size: 1.8em;"></a>
-                        </td>
-                    @else
-                        <td align="center">
-                            <a href="{{ route('matricula', {id: vou.id}) }}" class="fa fa-user-times" style="color: red; font-size: 1.8em;"></a>
-                        </td>
-                    @endif
-                @else
-                    <td align="center">
-                        <span class="fa fa-user-times" style="color: red; font-size: 1.8em;"></span>
-                    </td>
-                @endif
                 <td align="center">
-                    <a href="{{ route('voucher.delete', { id: vou.id }) }}" onclick="return confirm('Confirma a exclusão do voucher {{ vou.codigo }} ?');" class="fa fa-trash" style="color: red; font-size: 1.8em;"></a>
+                    @if(vou.validado == 1)
+                        @if(vou.matriculado == 1)
+                            <span class="fa fa-check-circle" style="color: green; font-size: 1.8em;"></span>
+                        @else
+                            <span class="fa fa-check-circle" style="color: #394acf; font-size: 1.8em;"></span>
+                        @endif
+                    @else
+                        <span class="fa fa-times-circle" style="color: red; font-size: 1.8em;"></span>
+                    @endif
+                </td>
+                <td align="center">{{ vou.curso_mat || '' }}</td>
+                <td align="center">
+                    @if(vou.validado == 1)
+                        <a href="{{ route('voucher.enroll', { id: vou.id }) }}" class="fa fa-sign-in" style="color: #394acf; font-size: 1.8em;"></a>
+                        <a onclick="return confirm('Não é possível excluir um voucher validado');" class="fa fa-trash" style="color: gray; font-size: 1.8em;" disabled></a>
+                    @else
+                        <a onclick="return confirm('Não é possível associar um curso a um voucher Aberto');" class="fa fa-sign-in" style="color: gray; font-size: 1.8em;"></a>
+                        <a href="{{ route('voucher.delete', { id: vou.id }) }}" onclick="return confirm('Confirma a exclusão do voucher {{ vou.codigo }} ?');" class="fa fa-trash" style="color: red; font-size: 1.8em;"></a>
+                    @endif
                 </td>
             </tr>
             @endeach
         </tbody>
     </table>
+
+    <ul class="list-group pull-right" style="list-style-type:none;" align="right">
+    <em>Legenda</em>
+        <li>Matriculado <span class="fa fa-check-circle" style="color: green;"></span></li>
+        <li>Validado <span class="fa fa-check-circle" style="color: #394acf;"></span></li>
+        <li>Aberto <span class="fa fa-times-circle" style="color: red;"></span></li>
+    </ul>
 @endsection

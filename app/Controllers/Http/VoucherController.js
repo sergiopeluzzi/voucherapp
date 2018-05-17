@@ -92,18 +92,20 @@ class VoucherController {
 
     }
 
-    async matricula({params, response}) {
-        let voucher = await Voucher.find(params.id)
+    async matricula({view, request}) {
+        let voucherInfo = await request.only(['curso_mat', 'codigo'])
 
-        if(voucher.matriculado == 0) {
-            voucher.matriculado = 1
-        } else {
-            voucher.matriculado = 0
-        }
+        let voucher = await Voucher.findBy('codigo', voucherInfo.codigo)
+
+        voucher.curso_mat = voucherInfo.curso_mat
+        voucher.codigo = voucherInfo.codigo
+        voucher.matriculado = 1
 
         await voucher.save()
 
-        return response.redirect('back')
+        return view.render('success', {
+            voucher: voucher
+        })
     }
 
     async apply({request, response, view}) {
@@ -149,6 +151,15 @@ class VoucherController {
         await voucher.save()
 
         return view.render('success', {
+            voucher: voucher
+        })
+    }
+
+    async enroll({view, params}) {
+        let voucher = await Voucher.find(params.id)
+
+        return view.render('voucher.enroll', {
+            title: 'Status da Matricula',
             voucher: voucher
         })
     }

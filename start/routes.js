@@ -32,6 +32,8 @@ Route.group(() => {
 Route.group(() => {
     Route.get('usuarios', 'UserController.index').as('usuarios.index')
     Route.get('usuarios/:id', 'UserController.show').as('usuarios.show')
+    Route.get('usuarios-create', 'UserController.create').as('usuarios.create')
+    Route.post('usuarios-create', 'UserController.store').as('usuarios.store')
     
     Route.get('usuarios-logout', 'UserController.logout').as('logout')
     Route.get('usuarios-delete/:id', 'UserController.delete').as('usuarios.delete')

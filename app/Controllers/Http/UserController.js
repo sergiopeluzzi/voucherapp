@@ -40,7 +40,7 @@ class UserController {
 
     user.username = userInfo.username
     user.email = userInfo.email
-    user.password = await Hash.make(userInfo.password)
+    user.password = userInfo.password
 
     await user.save()
 

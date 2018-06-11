@@ -17,7 +17,7 @@ class ColaboradoreSeeder {
   async run () {
     const colaboradores = await Factory
       .model('App/Models/Colaborador')
-      .createMany(20)
+      .createMany(0)
 
   }
 }

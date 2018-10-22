@@ -19,6 +19,7 @@ const Route = use('Route')
 
 Route.group(() => {
 
+	/*
     Route.get('/', async function({view}) {
         return view.render('home', { title: 'Página Inicial' })
     }).as('home')
@@ -26,7 +27,11 @@ Route.group(() => {
     Route.get('vouchers', 'VoucherController.validate').as('validate')
     Route.post('vouchers', 'VoucherController.apply').as('apply')
     Route.post('usuarios', 'UserController.login').as('login')
-    
+    */
+	
+	Route.get('/', async function({view}) {
+        return view.render('home', { title: 'Página Inicial' })
+    }).as('home')
 })
 
 Route.group(() => {

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Facimed VOUCHER APP</title>
+  <title>Scalare</title>
+  <!--<title>Facimed VOUCHER APP</title>-->
   <link rel="shortcut icon" href="icone.png" type="image/x-icon">
   {{ css('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css') }}
   {{ css('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
@@ -13,6 +14,7 @@
 <body>
   <div class="se-pre-con"></div>
   <main class="container">
+	<!--
     @if(auth.user)
       <a class="btn btn-default pull-right" href="{{ route('logout') }}">Logout</a>
       <nav class="nav navbar-light bg-light">
@@ -32,9 +34,13 @@
         </a>
       </nav>
     @endif
+	-->  
     
-    @!section('content')
+	<!--@!section('content')-->
+  
   </main>
+  
+  
   {{ script('https://code.jquery.com/jquery-3.1.1.js') }}
   {{ script('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }}
   {{ script('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js') }}
